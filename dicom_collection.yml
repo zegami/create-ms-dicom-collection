@@ -1,0 +1,18 @@
+name: MS Dicom collection
+description: URL imageset created from MS DICOM VNA
+
+# specifies that the images are to be fetched from urls, not by upload
+imageset_type: url
+
+# The column in the csv which contains the image urls
+dataset_column: url
+
+# The data for the collection
+dataset_type: file
+file_config:
+  path: dicom_instances.csv
+
+# Specify these custom headers for when Zegami fetches the images from the archive
+image_fetch_headers:
+  Accept: application/dicom
+  transfer-syntax: '*'
