@@ -1,9 +1,12 @@
+#!/usr/bin/env python3
+
 """
 Script to generate a csv file containing urls for all dicom instances on the specified server.
 
 The server should be passed as the arg
 """
 
+import argparse
 import json
 import sys
 
@@ -57,16 +60,31 @@ def get_instance_url(server, instance):
 
     return f'{server}/studies/{study_uid}/series/{series_uid}/instances/{instance_uid}'
 
-SERVER = sys.argv[1] or 'https://zegami.azurewebsites.net'
-# Obtain the instance descriptions
-instances = get_instances(SERVER)
 
-# Derive url for each instance found
-instance_urls = [get_instance_url(SERVER, instance) for instance in instances]
+def parse_args():
+    '''
+    Parse the commands
+    '''
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('servername', help='Microsoft Medical Imaging Server base address')
+    return parser.parse_args()
 
-# Write to a single-column csv file
-f = open("dicom_instances.csv", "w")
-header = ['url']
-lines = header + instance_urls
-f.write('\n'.join(header + instance_urls) + '\n')
-f.close()
+
+def main(argv):
+    args = parse_args()
+
+    # Obtain the instance descriptions
+    instances = get_instances(args.servername)
+
+    # Derive url for each instance found
+    instance_urls = [get_instance_url(args.servername, instance) for instance in instances]
+
+    # Write to a single-column csv file
+    with open("dicom_instances.csv", 'w') as f:
+        header = ['url']
+        lines = header + instance_urls
+        f.write('\n'.join(header + instance_urls) + '\n')
+
+
+if __name__ == '__main__':
+    sys.exit(main(sys.argv))
