@@ -1,10 +1,10 @@
 # Zegami MS-DICOM collection creation script
-This script provides a simple way to create a Zegami collection comprising the set of DICOM images available from an instance of Microsoft Medical Imaging Server for DICOM.
+This script provides a simple way to create a Zegami collection comprising the set of DICOM images available from an instance of [Microsoft Medical Imaging Server for DICOM](https://github.com/microsoft/dicom-server).
 
 ## Instructions for use
 
 ### Prerequisites
-* Sign up for a free Zegami trail account at https://zegami.com
+* Sign up for a free [Zegami](https://zegami.com/get-started/) trail account
 * Install python requirements for this script
 ```
 pip install -r requirements.txt
