@@ -1,2 +1,2 @@
 requests
-zegami-cli
+zegami-cli>=1.3

@@ -21,8 +21,6 @@ This will generate a file named `dicom_instances.csv`, containing a set of URLs 
 ### Creating the Zegami collection
 In order to use this file to create a Zegami collection, you will first need to sign up for a free Zegami trial account.
 
-*NOTE* `zegami-cli` version `1.4.0` or greater is required
-
 With a valid account use the cli to log in:
 ```
 zeg login
